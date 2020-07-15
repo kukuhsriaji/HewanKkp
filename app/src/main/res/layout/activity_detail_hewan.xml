@@ -34,7 +34,7 @@
         android:layout_height="200dp"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="100dp">
 
         <Button
             android:layout_width="100dp"
