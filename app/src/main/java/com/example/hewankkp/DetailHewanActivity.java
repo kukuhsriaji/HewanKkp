@@ -13,6 +13,7 @@ public class DetailHewanActivity extends AppCompatActivity {
 
     String strJenisExtras = "";
     static int listPeliharaanImg[] = {R.drawable.kucing, R.drawable.kelinci};
+    static int listPeliharaanSound[] = {R.raw.suara_kucing, R.raw.};
     static String listPeliharaanStr[] = {"KUCING", "KELINCI"};
     static int listLiarImg[] = {R.drawable.singa, R.drawable.harimau};
     static String listLiarStr[] = {"SINGA", "HARIMAU"};
@@ -58,7 +59,7 @@ public class DetailHewanActivity extends AppCompatActivity {
         btSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer = MediaPlayer.create();
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.suara_kucing);
                 try {
                     mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         public void onPrepared(MediaPlayer player) {
