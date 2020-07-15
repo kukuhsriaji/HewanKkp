@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView imgKucing;
+    ImageView imgPeliharaan, imgLiar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,17 +20,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponent(){
-        imgKucing = findViewById(R.id.imgKucing);
+        imgPeliharaan = findViewById(R.id.imgHewanPeliharaan);
+        imgLiar = findViewById(R.id.imgHewanLiar);
     }
 
     private void initAction(){
-        imgKucing.setOnClickListener(new View.OnClickListener(){
+        imgPeliharaan.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent a = new Intent(MainActivity.this, DetailHewanActivity.class);
-                a.putExtra("jenisHewan", "kucing");
+                a.putExtra("jenisHewan", "peliharaan");
                 startActivity(a);
-
+            }
+        });
+        imgLiar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(MainActivity.this, DetailHewanActivity.class);
+                a.putExtra("jenisHewan", "liar");
+                startActivity(a);
             }
         });
     }
