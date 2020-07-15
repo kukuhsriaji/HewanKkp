@@ -53,22 +53,20 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nama Hewan"
+                    android:text="Hewan Peliharaan"
                     android:gravity="center"
                     android:textColor="@color/dark"
                     android:textSize="20dp">
                 </TextView>
 
                 <ImageView
-                    android:id="@+id/imgKucing"
+                    android:id="@+id/imgHewanPeliharaan"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/kucing">
-
                 </ImageView>
+
             </LinearLayout>
-
-
         </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -89,7 +87,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Suara Hewan"
+                        android:text="Hewan Liar"
                         android:gravity="center"
                         android:textColor="@color/dark"
                         android:textSize="20dp">
@@ -97,8 +95,8 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
+                        android:id="@+id/imgHewanLiar"
                         android:src="@drawable/kelinci">
-
                     </ImageView>
                 </LinearLayout>
 
