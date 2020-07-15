@@ -1,18 +1,14 @@
 package com.example.hewankkp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 
-public class tombolnmhewan extends AppCompatActivity {
-    CardView namahewan;
+public class DetailHewanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tombolnmhewan);
-        namahewan = findViewById(R.id.namahewan);
-
+        setContentView(R.layout.activity_detail_hewan);
     }
 }
