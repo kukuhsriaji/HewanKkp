@@ -40,15 +40,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginRight="8dp"
-            android:id="@+id/btNext"
-            android:background="@drawable/bt_next"/>
+            android:id="@+id/btSound"
+            android:background="@drawable/bt_sound"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="8dp"
-            android:id="@+id/btSound"
-            android:background="@drawable/bt_sound"/>
-
+            android:id="@+id/btNext"
+            android:background="@drawable/bt_next"/>
 
     </LinearLayout>
 

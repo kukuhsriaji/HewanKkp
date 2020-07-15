@@ -13,12 +13,17 @@ public class DetailHewanActivity extends AppCompatActivity {
 
     String strJenisExtras = "";
     static int listPeliharaanImg[] = {R.drawable.kucing, R.drawable.kelinci};
-    static int listPeliharaanSound[] = {R.raw.suara_kucing, R.raw.};
+    static int listPeliharaanSound[] = {R.raw.suara_kucing, R.raw.suara_kelinci};
     static String listPeliharaanStr[] = {"KUCING", "KELINCI"};
+
     static int listLiarImg[] = {R.drawable.singa, R.drawable.harimau};
+    static int listLiarSound[] = {R.raw.suara_singa, R.raw.suara_harimau};
     static String listLiarStr[] = {"SINGA", "HARIMAU"};
-    int listHewanShow[];
+
+    int listHewanShowImg[];
+    int listHewanShowSound[];
     String listHewanShowStr[];
+
     Integer current;
     ImageView imgHewanExtras;
     TextView txNamaHewanExtras;
@@ -29,7 +34,7 @@ public class DetailHewanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_hewan);
-        listHewanShow = listPeliharaanImg;
+        listHewanShowImg = listPeliharaanImg;
         getExtras();
         initComponent();
         initAction();
@@ -40,7 +45,7 @@ public class DetailHewanActivity extends AppCompatActivity {
         btSound = findViewById(R.id.btSound);
         imgHewanExtras = findViewById(R.id.imgHewanExtras);
         txNamaHewanExtras = findViewById(R.id.txHewanExtras);
-        imgHewanExtras.setImageResource(listHewanShow[current]);
+        imgHewanExtras.setImageResource(listHewanShowImg[current]);
         txNamaHewanExtras.setText("NAMA HEWAN INI ADALAH\n"+ listHewanShowStr[current]);
     }
 
@@ -48,10 +53,11 @@ public class DetailHewanActivity extends AppCompatActivity {
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                stopMediaPlayer();
                 current++;
-                if(current >= listHewanShow.length) current = 0;
+                if(current >= listHewanShowImg.length) current = 0;
                 System.out.println("bt next setOnClickListener -> "+listHewanShowStr[current]);
-                imgHewanExtras.setImageResource(listHewanShow[current]);
+                imgHewanExtras.setImageResource(listHewanShowImg[current]);
                 txNamaHewanExtras.setText("NAMA HEWAN INI ADALAH\n"+ listHewanShowStr[current]);
             }
         });
@@ -59,7 +65,7 @@ public class DetailHewanActivity extends AppCompatActivity {
         btSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.suara_kucing);
+                mediaPlayer = MediaPlayer.create(getApplicationContext(), listHewanShowSound[current]);
                 try {
                     mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                         public void onPrepared(MediaPlayer player) {
@@ -69,10 +75,7 @@ public class DetailHewanActivity extends AppCompatActivity {
                     mediaPlayer.prepare();
                     mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.stop();
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                            mediaPlayer = new MediaPlayer();
+                            stopMediaPlayer();
                         }
                     });
                 } catch (Exception e) {
@@ -89,11 +92,13 @@ public class DetailHewanActivity extends AppCompatActivity {
                 strJenisExtras = bundle.getString("jenisHewan");
                 System.out.println("jenis hewan = "+strJenisExtras);
                 if("peliharaan".equals(strJenisExtras)){
-                    listHewanShow = listPeliharaanImg;
+                    listHewanShowImg = listPeliharaanImg;
+                    listHewanShowSound = listPeliharaanSound;
                     listHewanShowStr = listPeliharaanStr;
                     current = 0;
                 } else if("liar".equals(strJenisExtras)){
-                    listHewanShow = listLiarImg;
+                    listHewanShowImg = listLiarImg;
+                    listHewanShowSound = listLiarSound;
                     listHewanShowStr = listLiarStr;
                     current = 0;
                 }
@@ -101,4 +106,12 @@ public class DetailHewanActivity extends AppCompatActivity {
         }
     }
 
+    private void stopMediaPlayer(){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            mediaPlayer.release();
+            mediaPlayer = new MediaPlayer();
+        }
+    }
 }
