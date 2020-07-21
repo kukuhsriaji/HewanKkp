@@ -8,8 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".profil"></activity>
+        <activity android:name=".PuzzleActivity"></activity>
+        <activity android:name=".profil" />
         <activity android:name=".DetailHewanActivity" />
         <activity android:name=".splashscreen">
             <intent-filter>

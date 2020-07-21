@@ -10,17 +10,19 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView imgPeliharaan, imgLiar, imgLaut, imgprop;
+    ImageView imgPeliharaan, imgLiar, imgLaut, imgprop, imgPuzzle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-            }
+
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
+
         initComponent();
         initAction();
     }
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         imgLiar = findViewById(R.id.imgHewanLiar);
         imgLaut = findViewById(R.id.imgHewanLaut);
         imgprop = findViewById(R.id.profil);
+        imgPuzzle = findViewById(R.id.imgPuzzle);
     }
 
     private void initAction(){
@@ -61,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,profil.class));
+            }
+        });
+
+        imgPuzzle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PuzzleActivity.class));
             }
         });
     }
